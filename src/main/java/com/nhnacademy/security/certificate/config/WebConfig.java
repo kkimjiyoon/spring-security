@@ -1,6 +1,7 @@
 package com.nhnacademy.security.certificate.config;
 
 import com.nhnacademy.security.certificate.interceptor.SessionInterceptor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -8,13 +9,11 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
 
-    private final RedisTemplate<Object, Object> sessionRedisTemplate;
+    private final RedisTemplate<String, Object> sessionRedisTemplate;
 
-    public WebConfig(RedisTemplate<Object, Object> redisTemplate) {
-        this.sessionRedisTemplate = redisTemplate;
-    }
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");

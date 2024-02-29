@@ -15,12 +15,12 @@ import java.util.Objects;
 
 public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
-    private final RedisTemplate<Object, Object> sessionRedisTemplate;
+    private final RedisTemplate<String, Object> sessionRedisTemplate;
 
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    public CustomLogoutSuccessHandler(RedisTemplate<Object, Object> redisTemplate) {
-        this.sessionRedisTemplate = redisTemplate;
+    public CustomLogoutSuccessHandler(RedisTemplate<String, Object> sessionRedisTemplate) {
+        this.sessionRedisTemplate = sessionRedisTemplate;
     }
 
 
