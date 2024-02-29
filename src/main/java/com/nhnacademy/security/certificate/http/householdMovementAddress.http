@@ -1,0 +1,22 @@
+POST localhost:8080/household/1/movement
+Content-Type: application/json
+
+{
+  "householdSerialNumber": 1,
+  "houseMovementReportDate": "20240228",
+  "houseMovementAddress": "경남 김해시 내외중앙로 55",
+  "lastAddress": "N"
+}
+
+###
+PUT localhost:8080/household/1/movement/20240228
+Content-Type: application/json
+
+{
+  "houseMovementAddress": "경남 김해시 내외중앙로 55 5층",
+  "lastAddress": "Y"
+}
+
+###
+DELETE localhost:8080/household/1/movement/20240228
+Accept: application/json

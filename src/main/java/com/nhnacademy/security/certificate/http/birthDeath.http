@@ -1,0 +1,31 @@
+POST http://localhost:8080/residents/2/birth
+Content-Type: application/json
+
+{
+  "residentSerialNumber": 7,
+  "birthDeathTypeCode": "출생",
+  "birthDeathReportDate": "20120317",
+  "birthReportQualificationsCode": "동거인",
+  "emailAddress": "nam@nhnad.co.kr",
+  "phoneNumber": "010-6293-4312"
+}
+
+###
+POST http://localhost:8080/residents/4/death
+Content-Type: application/json
+
+{
+  "residentSerialNumber": 1,
+  "birthDeathTypeCode": "사망",
+  "birthDeathReportDate": "20240218",
+  "deathReportQualificationsCode": "동거인",
+  "emailAddress": null,
+  "phoneNumber": "010-6293-4312"
+}
+###
+DELETE http://localhost:8080/residents/2/birth/7
+Accept: application/json
+
+###
+DELETE http://localhost:8080/residents/4/death/1
+Accept: application/json

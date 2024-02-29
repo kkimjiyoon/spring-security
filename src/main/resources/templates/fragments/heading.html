@@ -1,0 +1,36 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    <a href="/profile"><span sec:authentication="name" /></a>,-->
+<!--&lt;!&ndash;    <a href="/profile"><span sec:authentication="principal.username"/></a>,&ndash;&gt;-->
+<!--    <a href="/logout">Logout</a>-->
+<!--</div>-->
+<!--<div sec:authorize="!isAuthenticated()">-->
+<!--    <a href="/redirect-index">Login</a>-->
+<!--</div>-->
+<!--<br />-->
+<!--<a href="/">Go to Main</a>-->
+<!--<br />-->
+<!--<br />-->
+<!--<br />-->
+
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- TODO #11: sec:authorize, sec:authorization 대신 request.attribute 이용하도록 수정 -->
+<div th:if="${not #strings.isEmpty(username)}">
+    <a href="/profile"><span th:text="${username}"></span></a>,&nbsp;
+    <a href="/logout">Logout</a>
+</div>
+<div th:unless="${not #strings.isEmpty(username)}">
+    <a href="/redirect-index">Login</a>
+</div>
+<br />
+<a href="/">Go to Main</a>
+<br />
+<br />
+<br />
+
+</html>

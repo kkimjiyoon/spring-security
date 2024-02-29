@@ -1,0 +1,52 @@
+# 주민 등록
+POST http://localhost:8080/residents
+Content-Type: application/json
+
+{
+  "residentSerialNumber": 8,
+  "name": "김지윤",
+  "residentRegistrationNumber": "991114-*******",
+  "genderCode": "여",
+  "birthDate": "19991114120600",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress" : "경남 마산시",
+  "residentId": "admin",
+  "residentPassword": "admin",
+  "residentEmail": "bystar1687@nate.com"
+}
+
+
+###
+
+# 주민 정보 GET
+GET http://localhost:8080/residents/8
+Accept: application/json
+
+###
+
+# 주민 정보 수정(이름)
+PUT http://localhost:8080/residents/8/name
+Content-Type: application/json
+
+{
+  "name" : "지윤김"
+}
+
+###
+
+# 주민 정보 수정(사망)
+PUT http://localhost:8080/residents/1/death
+Content-Type: application/json
+
+{
+  "deathDate" :"20210429090300",
+  "deathPlaceCode":"주택",
+  "deathPlaceAddress" : "강원도 고성군 금강산로 290번길"
+}
+
+###
+DELETE  http://localhost:8080/residents/8
+Accept: application/json
+
+
+

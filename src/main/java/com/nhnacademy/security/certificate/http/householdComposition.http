@@ -1,0 +1,17 @@
+POST http://localhost:8080/household/1/composition/3
+Content-Type: application/json
+
+{
+  "reportDate": "20240228",
+  "householdRelationshipCode": "모",
+  "householdCompositionChangeReasonCode" : "세대분리"
+}
+
+###
+
+GET http://localhost:8080/household/1/composition
+Accept: application/json
+
+###
+DELETE http://localhost:8080/household/1/composition/3
+Accept: application/json

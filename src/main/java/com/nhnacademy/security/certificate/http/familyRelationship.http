@@ -1,0 +1,26 @@
+# 가족관계 등록
+POST http://localhost:8080/residents/1/relationship
+Content-Type: application/json
+
+{
+  "familyResidentSerialNumber": 7,
+  "familyRelationshipCode": "증손자"
+}
+
+###
+# baseResidentserialNumber로 가족 관계 GET
+GET http://localhost:8080/residents/1/relationship
+Accept: application/json
+
+###
+# baseResidentserialNumber와 familyResidentSerialNumber로 가족 관계 수정
+PUT http://localhost:8080/residents/1/relationship/2
+content-Type: application/json
+
+{
+  "familyRelationshipCode": "child"
+}
+
+###
+DELETE http://localhost:8080/residents/1/relationship/7
+Accept: application/json
