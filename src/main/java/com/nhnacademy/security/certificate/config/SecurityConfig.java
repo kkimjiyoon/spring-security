@@ -19,6 +19,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests()
                 .requestMatchers("/redirect-index").authenticated()
+                .requestMatchers("/certificates/**").authenticated()
                 .anyRequest().permitAll()
                 .and();
 

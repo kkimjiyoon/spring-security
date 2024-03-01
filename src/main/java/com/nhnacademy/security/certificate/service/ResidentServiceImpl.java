@@ -10,6 +10,8 @@ import com.nhnacademy.security.certificate.response.ResidentResponse;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("residentService")
 public class ResidentServiceImpl implements ResidentService {
     private final ResidentRepository residentRepository;
@@ -19,6 +21,11 @@ public class ResidentServiceImpl implements ResidentService {
     public ResidentServiceImpl(ResidentRepository residentRepository, PasswordEncoder passwordEncoder) {
         this.residentRepository = residentRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public List<Resident> getResidents() {
+        return residentRepository.findAll();
     }
 
     @Override

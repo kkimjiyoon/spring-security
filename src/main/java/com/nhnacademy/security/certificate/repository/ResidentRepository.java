@@ -10,7 +10,7 @@ public interface ResidentRepository extends JpaRepository<Resident, Integer> {
 
     ResidentResponse findByResidentSerialNumber(int residentSerialNumber);
 
-
-
     Resident findByResidentId(String residentId);
+
+    Resident findByResidentEmail(String residentEmail);
 }

@@ -1,10 +1,15 @@
 package com.nhnacademy.security.certificate.service;
+import com.nhnacademy.security.certificate.domain.Resident;
 import com.nhnacademy.security.certificate.request.ResidentDeathModifyRequest;
 import com.nhnacademy.security.certificate.request.ResidentNameModifyRequest;
 import com.nhnacademy.security.certificate.request.ResidentRegisterRequest;
 import com.nhnacademy.security.certificate.response.ResidentResponse;
 
+import java.util.List;
+
 public interface ResidentService {
+
+    List<Resident> getResidents();
     ResidentResponse getResident(int residentSerialNumber);
 
     ResidentResponse registerResident(ResidentRegisterRequest residentRegisterDto);
