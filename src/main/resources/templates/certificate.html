@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Certificate</title>
+</head>
+<body>
+<h1>증명서 목록</h1>
+
+<th:block th:include="fragments/heading"/>
+
+<table class="table">
+    <thead class="table-light">
+    <tr>
+        <th scope="col">이름</th>
+        <th scope="col">주민등록등본</th>
+        <th scope="col">가족관계증명서</th>
+        <th scope="col">출생신고서</th>
+        <th scope="col">사망신고서</th>
+        <th scope="col">발급목록</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="resident:${residentList}">
+        <td th:text="${resident.name}"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+<ul class="pagination">
+    <li class="page-item" th:classappend="${!hasPrevious} ? 'disabled'"><a class="page-link"
+                                                                           href="/certificates?page=0">Previous</a>
+    </li>
+    <li class="page-item" th:classappend="${!hasNext} ? 'disabled'"><a class="page-link"
+                                                                       href="/certificates?page=1">Next</a></li>
+</ul>
+
+</body>
+</html>

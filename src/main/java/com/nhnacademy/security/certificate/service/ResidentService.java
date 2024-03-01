@@ -4,12 +4,14 @@ import com.nhnacademy.security.certificate.request.ResidentDeathModifyRequest;
 import com.nhnacademy.security.certificate.request.ResidentNameModifyRequest;
 import com.nhnacademy.security.certificate.request.ResidentRegisterRequest;
 import com.nhnacademy.security.certificate.response.ResidentResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ResidentService {
 
-    List<Resident> getResidents();
+    Page<Resident> getResidents(Pageable pageable);
     ResidentResponse getResident(int residentSerialNumber);
 
     ResidentResponse registerResident(ResidentRegisterRequest residentRegisterDto);

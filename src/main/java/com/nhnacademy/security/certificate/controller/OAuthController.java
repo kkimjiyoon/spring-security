@@ -13,11 +13,16 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,7 +88,7 @@ public class OAuthController {
     }
 
     @GetMapping("/githubLogin/success")
-    public String githubLoginSuccess(@RequestParam("access_token") String accessToken, HttpServletRequest request, HttpServletResponse response) {
+    public String githubLoginSuccess(@RequestParam("access_token") String accessToken, HttpServletResponse response, Model model) {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<GithubProfile> profileResponse = restTemplate.exchange(PROFILE_REQUEST_URL,
@@ -113,13 +118,10 @@ public class OAuthController {
 
         log.info("githubProfile: {}", githubProfile);
         log.info("sessionId: {}", sessionId);
-
-        request.setAttribute("name", githubProfile.getName());
-        request.setAttribute("email", githubProfile.getEmail());
-
-        log.info("{}", username);
-        log.info("{}", authority);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         response.addCookie(cookie);
+
         return "redirect:/";
     }
 

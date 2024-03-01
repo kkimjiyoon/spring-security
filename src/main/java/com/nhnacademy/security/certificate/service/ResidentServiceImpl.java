@@ -7,6 +7,8 @@ import com.nhnacademy.security.certificate.request.ResidentDeathModifyRequest;
 import com.nhnacademy.security.certificate.request.ResidentNameModifyRequest;
 import com.nhnacademy.security.certificate.request.ResidentRegisterRequest;
 import com.nhnacademy.security.certificate.response.ResidentResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +26,8 @@ public class ResidentServiceImpl implements ResidentService {
     }
 
     @Override
-    public List<Resident> getResidents() {
-        return residentRepository.findAll();
+    public Page<Resident> getResidents(Pageable pageable) {
+        return residentRepository.findAll(pageable);
     }
 
     @Override

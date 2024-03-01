@@ -15,10 +15,8 @@
 <body>
 <form method="post" action="/login">
     <span th:text="#{login.name}"></span>: <input class="form-control" type="text" name="id" style="width: 300px;">
-    <!--        <input type="text" name="id" /><br />-->
-    <span th:text="#{login.pwd}"></span>: <input type="password" class="form-control" name="password" style="width: 300px;">
-    <!--        <input type="password" name="password" /><br />-->
-    <input type="submit"/>
+    <span th:text="#{login.pwd}"></span>: <input type="password" class="form-control" name="password" style="width: 300px;"><br>
+    <button type="submit" class="btn btn-primary" onclick="location.href='/redirect-index'">로그인</button>
 </form>
 </body>
 </html>
